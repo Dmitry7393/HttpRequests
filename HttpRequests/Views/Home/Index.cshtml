@@ -1,0 +1,52 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/scripts/jquery-3.1.1.min.js"></script>
+    <script src="~/scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/scripts/send_put_request.js"></script>
+    <script src="~/scripts/send_delete_request.js"></script>
+    <style>
+        div {
+            background: #fc3;
+            border: 2px solid black; 
+            padding: 20px;
+            margin-top: 15%;
+            margin-left: 35%;
+            margin-right: 35%;
+        }
+    </style>
+</head>
+<body>
+    <div align="center">
+        @using (Html.BeginForm("HandleGetRequest", "Home", FormMethod.Get))
+        {
+            <input type="submit" value="GET"/>
+        }
+        <br />
+        @using (Html.BeginForm("HandlePostRequest", "Home", FormMethod.Post))
+        {
+            <input type="submit" value="POST" />
+        }
+        <br />
+        <button type="button" style="height:100%" class="btnSendPutRequest">PUT</button> <br /> <br />
+        <button type="button" style="height:100%" class="btnSendDeleteRequest">DELETE</button> 
+    </div>
+ 
+      <script>
+          $(document).on('click', '.btnSendPutRequest', function () {
+              requestPut();
+          });
+          $(document).on('click', '.btnSendDeleteRequest', function () {
+              requestDelete();
+         });
+      </script>
+</body>
+</html>
